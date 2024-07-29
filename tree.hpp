@@ -27,9 +27,6 @@ private:
     TreeNode<T>* root;
     int k;
 
-    int get_max_children() {
-        return k;
-    }
 
 //Recursive function to delete the tree
     void deleteTree(TreeNode<T>* node) {
@@ -290,7 +287,12 @@ public:
     }
 
     Iterator* begin_in_order() {
-        return new InOrderIterator(root);
+        if (k != 2) {
+            return new DFSIterator(root);
+        }
+        else { 
+            return new InOrderIterator(root);
+        }
     }
 
     Iterator* begin_bfs_scan() {
